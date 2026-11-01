@@ -104,9 +104,16 @@ body { display: flex; flex-direction: column; }
 .header-brand .icon-btn { margin-left: auto; }
 
 /* ────── Guide Title ────── */
+.guide-title-row {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  margin-bottom: 10px;
+}
 .guide-title {
   display: block;
-  width: 100%;
+  flex: 1;
+  min-width: 0;
   border: 1.5px solid var(--border);
   border-radius: var(--radius-xs);
   padding: 7px 10px;
@@ -117,11 +124,33 @@ body { display: flex; flex-direction: column; }
   background: var(--bg);
   outline: none;
   transition: border-color .2s, box-shadow .2s;
-  margin-bottom: 10px;
 }
 .guide-title:focus {
   border-color: var(--border-focus);
   box-shadow: 0 0 0 3px rgba(192,132,252,.18);
+}
+
+/* ────── Brand Color Swatch ────── */
+.brand-color-swatch {
+  flex-shrink: 0;
+  width: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  overflow: hidden;
+  background: var(--bg);
+}
+.brand-color-swatch input[type="color"] {
+  width: 44px;
+  height: 44px;
+  margin: -6px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background: none;
 }
 
 /* ────── Record Button ────── */
@@ -403,6 +432,31 @@ body { display: flex; flex-direction: column; }
 .change-image-btn:hover { background: rgba(30,27,75,.9); }
 .step-image-wrapper:hover .change-image-btn { display: flex; }
 
+/* Zoom control */
+.zoom-control {
+  display: flex;
+  gap: 4px;
+  margin-top: 6px;
+}
+.zoom-btn {
+  flex: 1;
+  padding: 5px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.zoom-btn:hover { background: var(--slate-50); }
+.zoom-btn.active {
+  background: linear-gradient(135deg, var(--purple-600), var(--purple-700));
+  border-color: transparent;
+  color: #fff;
+}
+
 /* Add image placeholder */
 .add-image-area {
   display: flex;
@@ -509,14 +563,16 @@ body { display: flex; flex-direction: column; }
 .export-bar {
   flex-shrink: 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
+  row-gap: 8px;
   padding: 10px 14px;
   background: var(--surface);
   border-top: 1px solid var(--border);
   box-shadow: 0 -1px 4px rgba(124,58,237,.04);
 }
-.export-group { display: flex; gap: 6px; margin-left: auto; }
+.export-group { display: flex; flex-wrap: wrap; gap: 6px; row-gap: 6px; margin-left: auto; }
 .export-btn {
   display: inline-flex;
   align-items: center;
